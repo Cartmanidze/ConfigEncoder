@@ -5,45 +5,41 @@ using Microsoft.Extensions.Logging;
 
 namespace ConfigEncoder.Core.Services
 {
-    public class BaseEncryptionService : BaseService, IEncryptionService
+    public class BaseDecryptionService : BaseService, IDecryptionService
     {
-        private const string _provider = "RsaProtectedConfigurationProvider";
-
         private string _sectionName;
-
-        public BaseEncryptionService(ILogger<BaseService> logger) : base(logger)
+        public BaseDecryptionService(ILogger<BaseService> logger) : base(logger)
         {
         }
 
-        public void Encryption(object config, string key)
+        public void Decryption(object config, string key)
         {
             try
             {
-                var isEncryption = EncryptionProcessing(config, key);
+                var isEncryption = DecryptionProcessing(config, key);
                 if (isEncryption)
                 {
-                    Logger.LogInformation($"Секция {_sectionName} зашифрованна");
+                    Logger.LogInformation($"Секция {_sectionName} дешифрованна");
                 }
                 else
                 {
-                    Logger.LogWarning($"Не удалось получить секцию {_sectionName}, шифрование не выполнено");
+                    Logger.LogWarning($"Не удалось получить секцию {_sectionName}, дешифрование не выполнено");
                 }
             }
             catch (Exception ex)
             {
-                Logger.LogError(ex, $"Ошибка при шифровании секции {_sectionName} : {ex.Message}");
+                Logger.LogError(ex, $"Ошибка при дешифровании секции {_sectionName} : {ex.Message}");
                 throw;
             }
         }
 
-        private bool EncryptionProcessing(object config, string key)
+        private bool DecryptionProcessing(object config, string key)
         {
             if (config == null) throw new ArgumentNullException(nameof(config));
             if (!(config is Configuration reducedConfig)) return false;
             ConfigurationSection section = reducedConfig.GetSection(key);
-            if (section == null) return false;
             _sectionName = section.SectionInformation.SectionName;
-            section.SectionInformation.ProtectSection(_provider);
+            section.SectionInformation.UnprotectSection();
             section.SectionInformation.ForceSave = true;
             reducedConfig.Save(ConfigurationSaveMode.Full);
             return true;

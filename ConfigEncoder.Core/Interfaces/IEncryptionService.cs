@@ -10,6 +10,6 @@
         /// </summary>
         /// <param name="config">Конфигурация</param>
         /// <param name="key">Ключ</param>
-        bool Encryption(object config, string key);
+        void Encryption(object config, string key);
     }
 }
