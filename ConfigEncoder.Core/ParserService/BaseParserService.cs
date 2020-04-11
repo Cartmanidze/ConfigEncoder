@@ -22,9 +22,9 @@ namespace ConfigEncoder.Core.Services
             {
                 return ParserProcessing(config);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Logger.LogError(e, $"Ошибка : {e.Message}");
+                Logger.LogError(ex, $"Ошибка парсинга : {ex.Message}");
                 throw;
             }
         }
