@@ -2,7 +2,7 @@
 using ConfigEncoder.Core.Interfaces;
 using Microsoft.Extensions.Logging;
 
-namespace ConfigEncoder.Core.EncrypterService
+namespace ConfigEncoder.Core.Services
 {
     public class BaseEncryptionService : BaseService, IEncryptionService
     {
