@@ -18,7 +18,7 @@ namespace ConfigEncoder.Core.Services
             }
             catch (Exception e)
             {
-                Logger.LogError(e, e.Message);
+                Logger.LogError(e, $"Ошибка : {e.Message}");
                 throw;
             }
         }
