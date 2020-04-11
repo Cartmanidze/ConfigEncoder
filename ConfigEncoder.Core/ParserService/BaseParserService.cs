@@ -7,9 +7,9 @@ namespace ConfigEncoder.Core.Services
     /// <summary>
     /// Базовая реализация парсера
     /// </summary>
-    public class BaseParserService : IParserService
+    public abstract class BaseParserService : IParserService
     {
-        public IEnumerable Parser(object config)
+        public virtual IEnumerable Parser(object config)
         {
             object[] sectionKeys = null;
             if (config == null) throw new ArgumentNullException(nameof(config));
