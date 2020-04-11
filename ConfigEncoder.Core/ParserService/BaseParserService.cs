@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Configuration;
+using ConfigEncoder.Core.Interfaces;
 using Microsoft.Extensions.Logging;
 
 namespace ConfigEncoder.Core.Services
@@ -10,6 +11,11 @@ namespace ConfigEncoder.Core.Services
     /// </summary>
     public class BaseParserService : BaseService, IParserService
     {
+        public BaseParserService(ILogger<BaseService> logger) : base(logger)
+        {
+
+        }
+
         public IEnumerable Parser(object config)
         {
             try

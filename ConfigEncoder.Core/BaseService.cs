@@ -1,9 +1,16 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using ConfigEncoder.Core.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace ConfigEncoder.Core
 {
-    public abstract class BaseService
+    public abstract class BaseService : IServices
     {
-        protected ILogger<BaseService> Logger { get; set; }
+        public ILogger Logger { get; set; }
+
+        protected BaseService(ILogger<BaseService> logger)
+        {
+            Logger = logger;
+        }
+
     }
 }

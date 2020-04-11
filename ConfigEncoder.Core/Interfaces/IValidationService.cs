@@ -1,9 +1,9 @@
-﻿namespace ConfigEncoder.Core
+﻿namespace ConfigEncoder.Core.Interfaces
 {
     /// <summary>
     /// Сервис валидации
     /// </summary>
-    public interface IValidationService
+    public interface IValidationService : IServices
     {
         /// <summary>
         /// Валидная конфигурация

@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 
-namespace ConfigEncoder.Core
+namespace ConfigEncoder.Core.Interfaces
 {
     /// <summary>
     /// Сервис парсинга файла конфигурации
     /// </summary>
-    public interface IParserService
+    public interface IParserService : IServices
     {
         /// <summary>
         /// Метод парсинга

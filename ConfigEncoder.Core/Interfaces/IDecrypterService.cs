@@ -1,9 +1,9 @@
-﻿namespace ConfigEncoder.Core
+﻿namespace ConfigEncoder.Core.Interfaces
 {
     /// <summary>
     /// Сервис дешифрования
     /// </summary>
-    public interface IDecryprterService
+    public interface IDecryprterService : IServices
     {
         /// <summary>
         /// Дешифрование 
