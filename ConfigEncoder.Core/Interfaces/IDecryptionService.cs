@@ -3,7 +3,7 @@
     /// <summary>
     /// Сервис дешифрования
     /// </summary>
-    public interface IDecryprterService : IServices
+    public interface IDecryptionService : IServices
     {
         /// <summary>
         /// Дешифрование 

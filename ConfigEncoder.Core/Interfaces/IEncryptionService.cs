@@ -3,7 +3,7 @@
     /// <summary>
     /// Сервис шифрования
     /// </summary>
-    public interface IEncrypterService : IServices
+    public interface IEncryptionService : IServices
     {
         /// <summary>
         /// Шифрование
