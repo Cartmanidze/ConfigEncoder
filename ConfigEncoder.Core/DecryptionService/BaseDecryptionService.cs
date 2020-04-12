@@ -1,7 +1,4 @@
-﻿using System;
-using System.Configuration;
-using ConfigEncoder.Core.Interfaces;
-using Microsoft.Extensions.Logging;
+﻿using ConfigEncoder.Core.Interfaces;
 
 namespace ConfigEncoder.Core.Services
 {
@@ -16,20 +13,25 @@ namespace ConfigEncoder.Core.Services
         {
             try
             {
-                var isEncryption = DecryptionProcessing(config, key);
-                if (isEncryption)
-                {
-                    Logger.LogInformation($"Секция {_sectionName} дешифрованна");
-                }
-                else
-                {
-                    Logger.LogWarning($"Не удалось получить секцию {_sectionName}, дешифрование не выполнено");
-                }
+                var isDecryption = DecryptionProcessing(config, key);
+                CheckDecryption(isDecryption);
             }
             catch (Exception ex)
             {
                 Logger.LogError(ex, $"Ошибка при дешифровании секции {_sectionName} : {ex.Message}");
                 throw;
+            }
+        }
+
+        private void CheckDecryption(bool isDecryption)
+        {
+            if (isDecryption)
+            {
+                Logger.LogInformation($"Секция {_sectionName} дешифрованна");
+            }
+            else
+            {
+                Logger.LogWarning($"Не удалось получить секцию {_sectionName}, дешифрование не выполнено");
             }
         }
 
