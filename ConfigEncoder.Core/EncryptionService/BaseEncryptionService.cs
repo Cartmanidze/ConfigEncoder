@@ -20,19 +20,24 @@ namespace ConfigEncoder.Core.Services
             try
             {
                 var isEncryption = EncryptionProcessing(config, key);
-                if (isEncryption)
-                {
-                    Logger.LogInformation($"Секция {_sectionName} зашифрованна");
-                }
-                else
-                {
-                    Logger.LogWarning($"Не удалось получить секцию {_sectionName}, шифрование не выполнено");
-                }
+                CheckEncryption(isEncryption);
             }
             catch (Exception ex)
             {
                 Logger.LogError(ex, $"Ошибка при шифровании секции {_sectionName} : {ex.Message}");
                 throw;
+            }
+        }
+
+        private void CheckEncryption(bool isEncryption)
+        {
+            if (isEncryption)
+            {
+                Logger.LogInformation($"Секция {_sectionName} зашифрованна");
+            }
+            else
+            {
+                Logger.LogWarning($"Не удалось получить секцию {_sectionName}, шифрование не выполнено");
             }
         }
 
