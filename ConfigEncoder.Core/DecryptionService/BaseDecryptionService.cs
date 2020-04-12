@@ -1,4 +1,6 @@
-﻿using ConfigEncoder.Core.Interfaces;
+﻿using System;
+using System.Configuration;
+using ConfigEncoder.Core.Interfaces;
 
 namespace ConfigEncoder.Core.Services
 {
