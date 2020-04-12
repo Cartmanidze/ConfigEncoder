@@ -1,7 +1,7 @@
 ﻿using ConfigEncoder.Core.Interfaces;
 using Microsoft.Extensions.Logging;
 
-namespace ConfigEncoder.Core
+namespace ConfigEncoder.Core.Services
 {
     public abstract class BaseService : IServices
     {
